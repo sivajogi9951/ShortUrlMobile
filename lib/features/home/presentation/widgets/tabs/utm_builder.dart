@@ -19,9 +19,7 @@ class UtmBuilder extends StatelessWidget {
             Text(
               'UTM Link Builder',
               style: context.theme.textTheme.headlineSmall!.copyWith(
-                fontSize: context.isMobile
-                    ? context.dynamicFont(0.03)
-                    : context.dynamicFont(0.015),
+                fontSize: context.setFontSize(18),
                 fontWeight: FontWeight.w600,
                 color: AppColors.primaryColor,
               ),

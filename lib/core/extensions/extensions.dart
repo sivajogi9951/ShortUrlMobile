@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 enum FormFactoryType { mobile, tablet, desktop }
 
@@ -8,7 +7,7 @@ extension StyleContext on BuildContext {
   double get width => mq.size.width;
   double get height => mq.size.height;
   TextScaler get textScaler => mq.textScaler;
-  setFontSize(val)=>val * (width / 1536);
+  setFontSize(val)=>(val * (width / 1536)).clamp(val*0.8,val*1.4);
 
   FormFactoryType get formFactor {
     if (width < 600) {
@@ -25,6 +24,4 @@ extension StyleContext on BuildContext {
   bool get isDesktop => formFactor == FormFactoryType.desktop;
 
   ThemeData get theme => Theme.of(this);
-  double dynamicFont(double percent) => width * percent;
-
 }

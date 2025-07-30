@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/features/about_us/data/model/analytics_model.dart';
 import 'package:short_url/features/about_us/presentation/widgets/about_info_tile.dart';
 import 'package:short_url/features/about_us/presentation/widgets/about_us_header.dart';

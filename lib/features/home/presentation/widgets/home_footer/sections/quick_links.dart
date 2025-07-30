@@ -19,41 +19,38 @@ class QuickLinks extends StatelessWidget {
           Text(
             'Quick Links',
             style: context.theme.textTheme.headlineLarge!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.03):context.dynamicFont(0.015),
+                fontSize: context.setFontSize(24),
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor
             ),
           ),
-          AppSizes.gap(w:context.width*0.01),
           InkWell(
             onTap: () => GoRouter.of(context).goNamed(RouteName.aboutUs),
             child: Text(
               'About Us',
               style: context.theme.textTheme.titleSmall!.copyWith(
-                  fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.01),
+                  fontSize: context.setFontSize(14),
                   color: AppColors.whiteDarkColor
               ),
             ),
           ),
-          AppSizes.gap(w:context.width*0.01),
           InkWell(
             onTap: () => GoRouter.of(context).goNamed(RouteName.contactUs),
             child: Text(
               'Contact Us',
               style: context.theme.textTheme.titleSmall!.copyWith(
-                  fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.01),
+                  fontSize: context.setFontSize(14),
                   color: AppColors.whiteDarkColor
               ),
             ),
           ),
-          AppSizes.gap(w:context.width*0.01),
           InkWell(
             onTap: () =>
                 GoRouter.of(context).goNamed(RouteName.termsConditions),
             child: Text(
               'Terms & Conditions',
               style: context.theme.textTheme.titleSmall!.copyWith(
-                  fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.01),
+                  fontSize: context.setFontSize(14),
                   color: AppColors.whiteDarkColor
               ),
             ),

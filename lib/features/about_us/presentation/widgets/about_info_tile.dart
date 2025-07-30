@@ -1,5 +1,6 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
-import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 
@@ -20,22 +21,32 @@ class AboutInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-        ),
-        Padding(padding: EdgeInsets.all(16), child: _getData(type,context)),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: context.theme.textTheme.titleLarge!.copyWith(
+      fontSize: context.setFontSize(22),
+      fontWeight: FontWeight.w600,
+      color: AppColors.primaryColor
+      ),
+          ),
+          Padding(padding: EdgeInsets.all(16), child: _getData(type,context)),
+        ],
+      ),
     );
   }
 
   _getData(AboutInfoType type,BuildContext context) {
     switch (type) {
       case AboutInfoType.titleDesc:
-        return Text(desc);
+        return Text(desc,style: context.theme.textTheme.bodyLarge!.copyWith(
+          fontSize: context.setFontSize(16)
+        ),);
       case AboutInfoType.titleBullets:
         return SizedBox(
           width: double.infinity,
@@ -47,7 +58,9 @@ class AboutInfoTile extends StatelessWidget {
                     bullets.length,
                     (index) => Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: Text('• ${bullets[index]}'),
+                      child: Text('• ${bullets[index]}',style: context.theme.textTheme.bodyLarge!.copyWith(
+                          fontSize: context.setFontSize(16)
+                      ),),
                     ),
                   )
                 : [],
@@ -76,11 +89,19 @@ class AboutInfoTile extends StatelessWidget {
                       Icon(Icons.circle,size: 8,color: AppColors.primaryColor,),
                       Expanded(child: RichText(
                         text: TextSpan(
-                          text: '${substrings[0]} :',
-
+                          text: ' ${substrings[0]} :',
+                          style: context.theme.textTheme.titleSmall!.copyWith(
+                              fontSize: context.setFontSize(16),
+                              color: AppColors.primaryAccentColor,
+                            fontWeight: FontWeight.w600
+                          ),
                           children: [
                             TextSpan(
                               text: substrings[1],
+                              style: context.theme.textTheme.titleSmall!.copyWith(
+                                  fontSize: context.setFontSize(14),
+                                  color: AppColors.blackColor,
+                              ),
                             ),
                           ],
                         ),

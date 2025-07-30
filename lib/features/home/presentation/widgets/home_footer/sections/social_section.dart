@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -21,7 +23,7 @@ class SocialSection extends StatelessWidget {
           Text(
             'ShortLink',
             style: context.theme.textTheme.headlineLarge!.copyWith(
-                fontSize: kIsWeb ?context.dynamicFont(0.03):context.dynamicFont(0.015),
+                fontSize: context.setFontSize(24),
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor
             ),
@@ -30,7 +32,7 @@ class SocialSection extends StatelessWidget {
           Text(
             'The most trusted URL shortener service',
             style: context.theme.textTheme.titleSmall!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.01),
+                fontSize: context.setFontSize(16),
                 color: AppColors.whiteDarkColor
             ),
           ),

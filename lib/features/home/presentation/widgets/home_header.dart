@@ -18,7 +18,7 @@ class HomeHeader extends StatelessWidget {
             text: TextSpan(
               text: 'Shorten Your URLs ',
               style: context.theme.textTheme.displayLarge!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.05):context.dynamicFont(0.025),
+                fontSize: context.setFontSize(32),
                 fontWeight: FontWeight.bold,
                   color: AppColors.blueColor
               ),
@@ -27,7 +27,7 @@ class HomeHeader extends StatelessWidget {
                 TextSpan(
                   text: 'Instantly',
                   style: context.theme.textTheme.displayLarge!.copyWith(
-                      fontSize: context.isMobile?context.dynamicFont(0.05):context.dynamicFont(0.025),
+                      fontSize: context.setFontSize(28),
                       fontWeight: FontWeight.bold,
                     color: AppColors.blueAccentColor
                   ),
@@ -40,7 +40,7 @@ class HomeHeader extends StatelessWidget {
           Text(
             'Transform long, complex URLs into short, shareable links.',
             style: context.theme.textTheme.titleSmall!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.009),
+                fontSize: context.setFontSize(14),
                 fontWeight: FontWeight.bold,
                 color: AppColors.subTextColor
             ),

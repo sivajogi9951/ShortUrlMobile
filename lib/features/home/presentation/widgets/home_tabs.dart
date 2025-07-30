@@ -3,7 +3,7 @@ import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/features/home/presentation/widgets/tabs/qr_code.dart';
-import 'package:short_url/features/home/presentation/widgets/tabs/short_url.dart';
+import 'package:short_url/features/shorten_url/presentation/pages/short_url.dart';
 import 'package:short_url/features/home/presentation/widgets/tabs/utm_builder.dart';
 
 class HomeTabs extends StatefulWidget {
@@ -41,7 +41,7 @@ class _HomeTabsState extends State<HomeTabs> {
                 });
               },
               labelStyle: context.theme.textTheme.bodyLarge!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.025):context.dynamicFont(0.010),
+                fontSize: context.setFontSize(16),
                 fontWeight: FontWeight.bold
               ),
               labelPadding: EdgeInsets.only(

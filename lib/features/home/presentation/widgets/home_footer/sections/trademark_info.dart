@@ -16,7 +16,7 @@ class TrademarkInfo extends StatelessWidget {
         Text(
           '© 2025 ShortLink. All rights reserved.',style: context.theme.textTheme.bodySmall!.copyWith(
           color: AppColors.subTextColor,
-          fontSize: context.isMobile?context.dynamicFont(0.03):context.dynamicFont(0.01),
+          fontSize: context.setFontSize(14),
           fontWeight: FontWeight.bold
         ),
         ),
@@ -26,12 +26,14 @@ class TrademarkInfo extends StatelessWidget {
             LargeAppBarMenuItem(
               text: 'Privacy Policy',
               isSelected: false,
+              textColor: AppColors.blueAccentColor,
               onTap: () =>
                   GoRouter.of(context).goNamed(RouteName.termsConditions),
             ),
             LargeAppBarMenuItem(
               text: 'Terms of Service',
               isSelected: false,
+              textColor: AppColors.blueAccentColor,
               onTap: () =>
                   GoRouter.of(context).goNamed(RouteName.termsConditions),
             ),

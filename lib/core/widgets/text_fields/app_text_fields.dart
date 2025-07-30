@@ -5,19 +5,22 @@ class AppTextFields extends StatelessWidget {
   final String hintText;
   final int? maxLines;
   final IconData? prefixIcon;
+  final String? Function(String?)? validator;
 
   const AppTextFields({
     this.controller,
     required this.hintText,
     this.prefixIcon,
     this.maxLines,
+    this.validator,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
+      validator: validator,
       maxLines: maxLines,
       decoration: InputDecoration(
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,

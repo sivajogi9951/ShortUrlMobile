@@ -11,15 +11,15 @@ class ContactInfo extends StatelessWidget {
 
     buildInfo(IconData icon, String text) {
       return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: AppColors.whiteDarkColor),
+          Icon(icon, color: AppColors.whiteDarkColor,size: context.setFontSize(16),),
           AppSizes.gap(w:context.width*0.01),
           Expanded(child: Text(
             text,
             style: context.theme.textTheme.titleSmall!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.02):context.dynamicFont(0.01),
+                fontSize: context.setFontSize(16),
                 color: AppColors.whiteDarkColor
             ),
           ),),
@@ -36,7 +36,7 @@ class ContactInfo extends StatelessWidget {
           Text(
             'Contact Info',
             style: context.theme.textTheme.headlineLarge!.copyWith(
-                fontSize: context.isMobile?context.dynamicFont(0.03):context.dynamicFont(0.015),
+                fontSize: context.setFontSize(24),
                 fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor
             ),

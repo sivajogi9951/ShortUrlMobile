@@ -3,24 +3,24 @@ import 'package:go_router/go_router.dart';
 import 'package:short_url/core/constants/app_images.dart';
 import 'package:short_url/core/constants/app_menu_list.dart';
 import 'package:short_url/core/constants/app_sizes.dart';
-import 'package:short_url/core/constants/app_text_styles.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/navigation/route_name.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/core/widgets/app_bar/app_bar_drawer.dart';
-import 'package:short_url/core/widgets/app_bar/drawer_menu.dart';
+import 'package:short_url/features/auth/presentation/widgets/login_dialog.dart';
 
 class MyAppBar extends StatelessWidget {
   const MyAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Material(
       elevation: 1,
       child: SizedBox(
         height: context.width * 0.1,
         width: context.width,
-        child:Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppSizes.gap(w: context.width * 0.02),
@@ -33,13 +33,32 @@ class MyAppBar extends StatelessWidget {
               },
               child: AppLogo(),
             ),
-            Expanded(child: context.isDesktop ? LargeMenu() : AppBarDrawer(),),
+            Expanded(child: context.isDesktop ? LargeMenu() : AppBarDrawer()),
+            ElevatedButton(
+              style: ButtonStyle(
+                shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    side: BorderSide(color: AppColors.primaryColor),
+                  ),
+                ),
+              ),
+              onPressed: () async{
+                await showDialog(
+                  context: context,
+                  builder: (_) => LoginDialog(),
+                );
+              },
+              child: Text('Sign In'),
+            ),
             AppSizes.gap(w: context.width * 0.02),
           ],
         ),
       ),
     );
   }
+
+
 }
 
 class AppLogo extends StatelessWidget {
@@ -49,11 +68,15 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(AppImages.appLogo, width: context.width*0.03, height: context.width*0.03),
+        Image.asset(
+          AppImages.appLogo,
+          width: context.setFontSize(20),
+          height: context.setFontSize(20),
+        ),
         Text(
           'ShortURL',
           style: context.theme.textTheme.headlineLarge!.copyWith(
-            fontSize: context.isMobile?context.dynamicFont(0.03):context.dynamicFont(0.015),
+            fontSize: context.setFontSize(20),
           ),
         ),
       ],
@@ -116,11 +139,11 @@ class LargeAppBarMenuItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.all(context.width*0.01),
+        padding: EdgeInsets.all(context.width * 0.01),
         child: Text(
           text,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            fontSize: context.isMobile?context.dynamicFont(0.03):context.dynamicFont(0.01),
+            fontSize: context.setFontSize(14),
             color:
                 textColor ??
                 (GoRouter.of(context).state.name!
