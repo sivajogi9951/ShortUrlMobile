@@ -1,29 +1,25 @@
-class ShortUrlModel {
-  String? mainUrl;
-  String? shortUrl;
-  String? customDomain;
-  int? maxClicks;
-  String? createdAt;
-  String? updatedAt;
-  String? expiresAt;
+import 'package:short_url/features/shorten_url/domain/entity/short_url.dart';
 
-  ShortUrlModel(
-      {this.mainUrl,
-        this.shortUrl,
-        this.customDomain,
-        this.maxClicks,
-        this.createdAt,
-        this.updatedAt,
-        this.expiresAt});
-
-  ShortUrlModel.fromJson(Map<String, dynamic> json) {
-    mainUrl = json['main_url'];
-    shortUrl = json['short_url'];
-    customDomain = json['custom_domain'];
-    maxClicks = json['max_clicks'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    expiresAt = json['expires_at'];
+class ShortUrlModel extends ShortUrl {
+  ShortUrlModel({
+    required super.mainUrl,
+    required super.shortUrl,
+    required super.customDomain,
+    required super.maxClicks,
+    required super.createdAt,
+    required super.updatedAt,
+    required super.expiresAt,
+  });
+  factory ShortUrlModel.fromJson(Map<String, dynamic> json) {
+    return ShortUrlModel(
+      mainUrl: json['main_url'] ?? '',
+      shortUrl: json['short_url'] ?? '',
+      customDomain: json['custom_domain'] ?? '',
+      maxClicks: json['max_clicks'] ?? 0,
+      createdAt: json['created_at'] ?? '',
+      updatedAt: json['updated_at'],
+      expiresAt: json['expires_at'],
+    );
   }
 
   Map<String, dynamic> toJson() {

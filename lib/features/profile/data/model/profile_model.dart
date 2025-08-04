@@ -7,8 +7,13 @@ class ProfileModel {
   int? urlLimit;
   PlanModel? currentPlan;
 
-  ProfileModel(
-      {this.id, this.email, this.isVerified, this.urlLimit, this.currentPlan});
+  ProfileModel({
+    this.id,
+    this.email,
+    this.isVerified,
+    this.urlLimit,
+    this.currentPlan,
+  });
 
   ProfileModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

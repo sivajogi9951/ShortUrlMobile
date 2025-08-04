@@ -15,4 +15,18 @@ class ShortUrlRequest{
     data['custom_domain'] = customDomain;
     return data;
   }
+
+  ShortUrlRequest copyWith({
+    String? mainURL,
+    String? userId,
+    String? deviceId,
+    String? customDomain,
+  }) {
+    return ShortUrlRequest(
+      mainURL: mainURL ?? this.mainURL,
+      userId: userId ?? this.userId,
+      deviceId: deviceId ?? this.deviceId,
+      customDomain: customDomain ?? this.customDomain,
+    );
+  }
 }

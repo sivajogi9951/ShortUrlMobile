@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:short_url/core/extensions/extensions.dart';
+import 'package:short_url/core/providers/common_providers.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/features/home/presentation/widgets/home_footer/home_footer.dart';
 import 'package:short_url/features/home/presentation/widgets/home_header.dart';
 import 'package:short_url/features/home/presentation/widgets/home_illustrate.dart';
 import 'package:short_url/features/home/presentation/widgets/home_tabs.dart';
 
-class HomeDesktop extends StatelessWidget {
+class HomeDesktop extends ConsumerWidget {
   const HomeDesktop({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return SingleChildScrollView(
       child: Column(
         children: [
           HomeHeader(),
+          Text(ref.read(sharedPrefsProvider).deviceId??'No Device Id'),
+          Text((ref.read(sharedPrefsProvider).userId.toString())??'User ID'),
           SizedBox(
             height: context.height * 0.8,
             child: Row(

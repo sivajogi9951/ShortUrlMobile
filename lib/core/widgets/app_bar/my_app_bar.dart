@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:short_url/core/constants/app_images.dart';
 import 'package:short_url/core/constants/app_menu_list.dart';
 import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/navigation/route_name.dart';
+import 'package:short_url/core/providers/common_providers.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/core/widgets/app_bar/app_bar_drawer.dart';
 import 'package:short_url/features/auth/presentation/widgets/login_dialog.dart';
 
-class MyAppBar extends StatelessWidget {
+class MyAppBar extends ConsumerWidget {
   const MyAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
-
+  Widget build(BuildContext context,WidgetRef ref) {
+final int? userId= ref.read(sharedPrefsProvider).userId;
     return Material(
       elevation: 1,
       child: SizedBox(
@@ -34,7 +36,7 @@ class MyAppBar extends StatelessWidget {
               child: AppLogo(),
             ),
             Expanded(child: context.isDesktop ? LargeMenu() : AppBarDrawer()),
-            ElevatedButton(
+            userId!=null?Text("Profile"):ElevatedButton(
               style: ButtonStyle(
                 shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(

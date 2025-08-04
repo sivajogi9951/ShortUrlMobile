@@ -1,20 +1,21 @@
 import 'package:dio/dio.dart';
 import 'package:short_url/core/constants/app_urls.dart';
+import 'package:short_url/core/services/base_service.dart';
+import 'package:short_url/core/utils/app_enums.dart';
 import 'package:short_url/features/profile/data/model/profile_model.dart';
 
 abstract class ProfileRemoteDataSource{
   Future<ProfileModel> getProfileDetails();
 }
 
-class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource{
-  final Dio dio;
+class ProfileRemoteDataSourceImpl extends BaseService implements ProfileRemoteDataSource{
 
-  ProfileRemoteDataSourceImpl({required this.dio});
+  ProfileRemoteDataSourceImpl();
 
   @override
   Future<ProfileModel> getProfileDetails() async{
     try {
-      final response = await dio.get(AppUrls.profileDetails);
+      final response = await makeRequest(baseUrl: AppUrls.baseUrl,url: AppUrls.profileDetails,method: RequestType.get);
 
       if (response.statusCode == 200) {
         final data = response.data['details'];

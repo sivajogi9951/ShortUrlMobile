@@ -1,17 +1,17 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 class ConnectivityService {
-  static final ConnectivityService _instance = ConnectivityService._internal();
-
-  factory ConnectivityService() => _instance;
-
   final Connectivity _connectivity = Connectivity();
 
-  ConnectivityService._internal();
-
-  Future<bool> get isConnected async {
+  Future<bool> isConnected() async {
     final result = await _connectivity.checkConnectivity();
-    return result.first != ConnectivityResult.none;
+    final res= hasInternet(result);
+    return res;
+  }
+
+  bool hasInternet(List<ConnectivityResult> results) {
+    return results.contains(ConnectivityResult.mobile) ||
+        results.contains(ConnectivityResult.wifi);
   }
 
   Stream<List<ConnectivityResult>> get onConnectivityChanged =>

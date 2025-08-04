@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
-import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/features/docs/presentation/widgets/bullets_tile.dart';
 
 class MyExpansionTile extends StatelessWidget {

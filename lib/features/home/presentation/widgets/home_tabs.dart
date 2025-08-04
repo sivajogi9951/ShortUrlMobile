@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/theme/app_colors.dart';
-import 'package:short_url/features/home/presentation/widgets/tabs/qr_code.dart';
+import 'package:short_url/features/qr_code/presentation/pages/qr_code.dart';
 import 'package:short_url/features/shorten_url/presentation/pages/short_url.dart';
-import 'package:short_url/features/home/presentation/widgets/tabs/utm_builder.dart';
+import 'package:short_url/features/campaign/presentation/pages/utm_builder.dart';
 
 class HomeTabs extends StatefulWidget {
   const HomeTabs({super.key});

@@ -9,3 +9,6 @@ https://www.youtube.com/watch?v=L-DhEd5hF3M&t=1087s
 https://www.youtube.com/watch?v=UOTwRXAh6VY&t=8576s
 ## FontSize Responsive
 https://www.youtube.com/watch?v=St3f97bvQ6k
+
+## Flutter Web XMLHttpRequest Error FIX Solution
+https://www.youtube.com/watch?v=H-q-_0oGOzg

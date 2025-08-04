@@ -3,10 +3,11 @@ import 'package:short_url/core/constants/app_sizes.dart';
 import 'package:short_url/core/extensions/extensions.dart';
 import 'package:short_url/core/theme/app_colors.dart';
 import 'package:short_url/core/widgets/buttons/app_button.dart';
-import 'package:short_url/features/plans/data/model/plan_model.dart';
+import 'package:short_url/features/plans/domain/entity/plan_entity.dart';
+import 'package:short_url/features/plans/presentation/widgets/billing_card.dart';
 
 class PricingCard extends StatelessWidget {
-  final PlanModel data;
+  final PlanEntity data;
   const PricingCard({super.key, required this.data});
 
   @override
@@ -45,33 +46,34 @@ class PricingCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    data.name!,
-                    style: context.theme.textTheme.bodyLarge!.copyWith(
-                      fontSize: context.setFontSize(18),
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.blackColor,
-                    ),
+                    data.isRecommended
+                        ? '${data.name} ( Recommended )'
+                        : data.name,
                   ),
                   Text(
-                    data.priceDisplay!,
+                    data.name,
                     style: context.theme.textTheme.bodyLarge!.copyWith(
                       fontSize: context.setFontSize(18),
                       fontWeight: FontWeight.w600,
                       color: AppColors.primaryColor,
                     ),
                   ),
-                  Text(data.description!),
+                  Text(data.description),
                 ],
               ),
-              Expanded(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: List.generate(
-                  data.features!.length,
-                      (index) => Text('✓ ${data.features![index]}'),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: List.generate(
+                    data.features.length,
+                    (index) => Text('✓ ${data.features[index]}'),
+                  ),
                 ),
-              ),),
-              AppButton(label: 'Get Started', onPressed: () {}),
+              ),
+              AppButton(label: 'View Pricing', onPressed: () {
+                showDialog(context: context, builder: (context)=>BillingCard(data: data.billingOptions));
+              }),
             ],
           ),
         ),

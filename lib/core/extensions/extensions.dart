@@ -7,6 +7,10 @@ extension StyleContext on BuildContext {
   double get width => mq.size.width;
   double get height => mq.size.height;
   TextScaler get textScaler => mq.textScaler;
+
+  double proportionateWidth(inputWidth) => (inputWidth / 1536)*width;
+  double proportionateHeight(inputHeight) => (inputHeight / 825)*height;
+
   setFontSize(val)=>(val * (width / 1536)).clamp(val*0.8,val*1.4);
 
   FormFactoryType get formFactor {

@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:short_url/core/providers/common_providers.dart';
 import 'package:short_url/features/profile/data/model/profile_model.dart';
 import 'package:short_url/features/profile/data/repo_impl/profile_repo_impl.dart';
 import 'package:short_url/features/profile/data/source/profile_remote_datasource.dart';
@@ -8,9 +7,8 @@ import 'package:short_url/features/profile/domain/usecases/user_details_use_case
 
 //Repository
 final profileRepositoryProvider = Provider<ProfileRepo>((ref) {
-  final remote = ProfileRemoteDataSourceImpl(dio: ref.watch(dioProvider));
-  final netInfo = ref.watch(connectivityProvider);
-  return ProfileRepoImpl(remoteDataSource: remote, networkInfo: netInfo);
+  final remote = ProfileRemoteDataSourceImpl();
+  return ProfileRepoImpl(remoteDataSource: remote);
 });
 
 //UseCases

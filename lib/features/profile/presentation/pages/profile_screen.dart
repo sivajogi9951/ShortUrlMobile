@@ -20,7 +20,7 @@ class ProfilePage extends ConsumerWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(user.currentPlan!.name!),
+                  Text(user.currentPlan!.name),
                   Text(' - Balance: '),
                   Text(user.urlLimit.toString()),
                 ],
