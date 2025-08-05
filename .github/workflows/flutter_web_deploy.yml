@@ -3,7 +3,7 @@ name: Deploy Flutter Web
 on:
   push:
     branches:
-      - master
+      - master  # or 'main' if you're using the main branch
 
 jobs:
   build:
@@ -11,10 +11,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      # ✅ Install Flutter
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.0"  # Use your target Flutter version
+
+      # ✅ Run Flutter commands
       - run: flutter clean
       - run: flutter pub get
       - run: flutter build web --release
 
+      # ✅ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
